@@ -7,3 +7,6 @@ curl nginx.default.svc.cluster.local
 nc -zv 172.17.0.3 80
 nc -zv 172-17-0-3.default.pod.cluster.local 80
 nc -zv nginx.default.svc.cluster.local 80
+
+
+kubectl get ingress
