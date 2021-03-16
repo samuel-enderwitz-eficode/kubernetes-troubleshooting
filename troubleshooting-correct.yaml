@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: troubleshooting
   labels:
-    app: nginx
+    app: troubleshooting
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: troubleshooting
   template:
     metadata:
       labels:
-        app: nginx
+        app: troubleshooting
     spec:
       containers:
-      - name: nginx
+      - name: troubleshooting
         image: nginx:1.19.7-alpine
         ports:
         - name: http
@@ -31,10 +31,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: troubleshooting
 spec:
   selector:
-    app: nginx
+    app: troubleshooting
   ports:
     - protocol: TCP
       port: 80
@@ -43,7 +43,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx
+  name: troubleshooting
 spec:
   rules:
   - host: ""
@@ -53,19 +53,19 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: nginx
+            name: troubleshooting
             port:
               number: 80
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: nginx
+  name: troubleshooting
 spec:
   host: ""
   to:
     kind: Service
-    name: nginx
+    name: troubleshooting
     weight: 100
   port:
     targetPort: 80
